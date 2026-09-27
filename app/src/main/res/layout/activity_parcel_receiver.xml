@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.delivery.ParcelReceiverActivity">
+
+    <Toolbar
+        android:id="@+id/pageStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Receiver"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/pageStatus"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/parcelStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/parcel_received_at_cisd_hub"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <include
+            android:id="@+id/parcelInfo"
+            layout="@layout/fragment_parcel_info" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/takeTheParcelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+
+            android:text="@string/take_the_parcel" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/returnTheParcelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BD2D2D"
+            android:text="@string/return_the_parcel" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/partialPayForTheParcelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BD9E2D"
+            android:text="@string/partial_payment" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
