@@ -57,4 +57,6 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cisd_hub">CISD Hub</string>
+    <string name="parcel_received_at_cisd_hub">Parcel Received at CISD Hub</string>
 </resources>

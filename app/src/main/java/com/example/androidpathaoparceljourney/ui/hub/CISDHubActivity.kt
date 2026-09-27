@@ -9,18 +9,15 @@ import androidx.core.content.IntentCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.androidpathaoparceljourney.R
-import com.example.androidpathaoparceljourney.databinding.ActivityPickupReceiveBinding
+import com.example.androidpathaoparceljourney.databinding.ActivityCisdhubBinding
 import com.example.androidpathaoparceljourney.model.Parcel
 
-class PickupReceiveActivity : AppCompatActivity() {
-
-    lateinit var binding: ActivityPickupReceiveBinding
-    var agentAssigned: Boolean = false
-
+class CISDHubActivity : AppCompatActivity() {
+    lateinit var binding: ActivityCisdhubBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityPickupReceiveBinding.inflate(layoutInflater)
+        binding = ActivityCisdhubBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -28,8 +25,17 @@ class PickupReceiveActivity : AppCompatActivity() {
             insets
         }
 
+
         val parcel: Parcel =
             IntentCompat.getSerializableExtra<Parcel>(intent, "parcel", Parcel::class.java)!!
+
+        var agentAssigned: Boolean = false
+
+        binding.parcelInfo.recipientName.text = "Recipient Name : " + parcel.recipientName
+        binding.parcelInfo.recipientPhone.text = "Phone number : " + parcel.recipientPhoneNumber
+        binding.parcelInfo.deliveryAddress.text = "Address : " + parcel.deliveryAddress
+        binding.parcelInfo.amountToCollect.text =
+            "Totaal amount to collect : " + parcel.amountToCollect.toString()
 
         binding.parcelUpdateButton.setOnClickListener {
             if (!agentAssigned) {
@@ -41,21 +47,21 @@ class PickupReceiveActivity : AppCompatActivity() {
                 binding.parcelInfo.amountToCollect.text =
                     "Total amount to collect : " + parcel.amountToCollect.toString()
 
-                binding.parcelUpdateButton.text = "Assign to agent sajid for CISD Hub transfer 🚚"
+                binding.parcelUpdateButton.text = "Assign to agent sajid for LMH(Last Mile Hub) transfer 🚚"
 
                 Toast.makeText(
-                    this@PickupReceiveActivity,
+                    this@CISDHubActivity,
                     "Hub Manager Received The Parcel",
                     Toast.LENGTH_LONG
                 ).show()
             } else {
                 Toast.makeText(
-                    this@PickupReceiveActivity,
-                    "Assigned to sajid and he is taking this parcel to CISD Hub",
+                    this@CISDHubActivity,
+                    "Assigned to sajid and he is taking this parcel to LMH(Last Mile Hub)",
                     Toast.LENGTH_LONG
                 ).show()
 
-                startActivity(Intent(this@PickupReceiveActivity, CISDHubActivity::class.java).apply {
+                startActivity(Intent(this@CISDHubActivity, CISDHubActivity::class.java).apply {
                     putExtra("parcel", parcel)
                 })
                 finish()
@@ -63,7 +69,6 @@ class PickupReceiveActivity : AppCompatActivity() {
 
 
         }
-
 
     }
 }

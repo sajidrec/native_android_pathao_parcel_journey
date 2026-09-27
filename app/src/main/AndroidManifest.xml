@@ -34,17 +34,13 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.hub.pickupHubDropAndNextAssignActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.hub.PickupRecieveActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".ui.hub.PickupReceiveActivity"
             android:exported="false"
             android:theme="@style/Theme.AndroidPathaoParcelJourney"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.hub.CISDHubActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
 
